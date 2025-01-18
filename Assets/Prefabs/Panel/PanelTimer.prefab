@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 643098949696133272}
   - component: {fileID: 4634868384471861639}
   - component: {fileID: 6402803904277365729}
-  - component: {fileID: 3383675021936779948}
+  - component: {fileID: 7195331323044041230}
   m_Layer: 5
   m_Name: PanelTimer
   m_TagString: Untagged
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3383675021936779948
+--- !u!114 &7195331323044041230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,7 +362,7 @@ MonoBehaviour:
   blueImageText: {fileID: 2933033375560993000}
   redImage: {fileID: 8803823858493654840}
   redImageText: {fileID: 202597604090098544}
-  duration: 69
+  duration: 40
 --- !u!1 &4655968268741951588
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 108.51138, y: 0}
+  m_AnchoredPosition: {x: 140.99998, y: 15}
   m_SizeDelta: {x: 218.0228, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &117593644771966844
@@ -546,7 +546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 108.51138, y: 0}
+  m_AnchoredPosition: {x: 141, y: 12.299988}
   m_SizeDelta: {x: 218.0228, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6893307384377448449

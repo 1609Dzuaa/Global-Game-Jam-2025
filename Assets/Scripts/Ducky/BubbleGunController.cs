@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class BubbleGunController : MonoBehaviour
 {
@@ -101,5 +97,6 @@ public class BubbleGunController : MonoBehaviour
             DEFAULT_VALUE_ZERO,
             DEFAULT_VALUE_ZERO
         );
+        EventsManager.Notify(EventID.OnGameStart);
     }
 }
