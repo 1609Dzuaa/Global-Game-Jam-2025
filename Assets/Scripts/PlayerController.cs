@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private PlayerAnim _animation;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
