@@ -15,4 +15,5 @@ public class LevelConfig
     public int level;
     public GameObject tileMap;
     public Sprite background;
+    public float limitedTime;
 }

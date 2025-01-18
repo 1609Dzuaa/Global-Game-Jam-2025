@@ -26,7 +26,7 @@ public class PanelMainMenu : MonoBehaviour
 
     private void OnClickedStart()
     {
-        GameData.Instante.Level = 1; //Jusg to test, set level in select level
+        GameData.Instante.SetLevel(1); //Jusg to test, set level in select level
         SceneManager.LoadScene("SampleScene");
     }
 

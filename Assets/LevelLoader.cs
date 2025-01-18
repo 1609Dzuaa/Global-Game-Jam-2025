@@ -5,18 +5,15 @@ using System.Linq;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] private LevelSO config;
-
     private void Awake()
     {
-        var data = config.levelConfigs.FirstOrDefault(p => p.level == GameData.Instante.Level);
-        if(data == null)
+        var _currentLevel = GameData.Instante.GetCurrentLevelConfig();
+        if(_currentLevel == null)
         {
             Debug.LogError("Null level data");
             return;
         }
-
-        GameObject.Instantiate(data.tileMap, Vector3.zero, Quaternion.identity, transform);
+        GameObject.Instantiate(_currentLevel.tileMap, Vector3.zero, Quaternion.identity, transform);
         //set background
     }
 }
