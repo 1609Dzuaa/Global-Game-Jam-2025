@@ -20,6 +20,6 @@ public enum PanelName
 {
     PanelMainMenu,
     PanelOption,
+    PanelForce,
     PanelTimer,
-    PanelTimer1,
 }
