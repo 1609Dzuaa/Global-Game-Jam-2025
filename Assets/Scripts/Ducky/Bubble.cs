@@ -23,7 +23,7 @@ public class Bubble : MonoBehaviour
     private float _elapsedTime = 0f;
     private readonly int _popAnimationHash = Animator.StringToHash("pop");
 
-    public bool IsRealeased { get; set; }
+    public bool IsRealeased { get; set; } = false;
     private bool _isPopped = false;
     private bool _isInitialized = false;
 

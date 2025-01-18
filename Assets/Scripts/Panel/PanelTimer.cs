@@ -37,8 +37,8 @@ public class PanelTimer : MonoBehaviour
         timerText = blueImageText;
         timerText.text =
             Mathf.FloorToInt(timeRemaining / 60).ToString("00")
-                        + ":"
-                        + Mathf.CeilToInt(timeRemaining % 60).ToString("00");
+            + ":"
+            + Mathf.CeilToInt(timeRemaining % 60).ToString("00");
     }
 
     private void HandleImage()
@@ -67,17 +67,17 @@ public class PanelTimer : MonoBehaviour
                     timerText.text = Mathf.CeilToInt(timeRemaining).ToString();
                 }
 
-                if (timeRemaining / duration < 0.3f)
+                if (timeRemaining / duration > 0.3f)
                 {
                     blueImage.SetActive(true);
                     redImage.SetActive(false);
-
-                    timerText = redImageText;
                 }
                 else
                 {
-                    blueImage.SetActive(true);
-                    redImage.SetActive(false);
+                    blueImage.SetActive(false);
+                    redImage.SetActive(true);
+
+                    timerText = redImageText;
                 }
             })
             .OnComplete(() =>

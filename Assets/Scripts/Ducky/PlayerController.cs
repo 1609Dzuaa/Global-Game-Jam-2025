@@ -38,28 +38,28 @@ public class PlayerController : MonoBehaviour
                 _animation.SetAnim(AnimationName.Idle);
             }
         }
-        // else
-        // {
-        if (Input.GetMouseButtonDown(0))
-        {
-            HandleRaycast();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            HandleBubbleSplit();
-        }
-
-        if (!IsMouseOverPlayerX())
-        {
-            _animation.SetAnim(AnimationName.Move);
-            _playerMover.Move(_mousePosition);
-        }
         else
         {
-            _animation.SetAnim(AnimationName.Idle);
+            if (Input.GetMouseButtonDown(0))
+            {
+                HandleRaycast();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                HandleBubbleSplit();
+            }
+
+            if (!IsMouseOverPlayerX())
+            {
+                _animation.SetAnim(AnimationName.Move);
+                _playerMover.Move(_mousePosition);
+            }
+            else
+            {
+                _animation.SetAnim(AnimationName.Idle);
+            }
         }
-        // }
     }
 
     private void HandleRaycast()

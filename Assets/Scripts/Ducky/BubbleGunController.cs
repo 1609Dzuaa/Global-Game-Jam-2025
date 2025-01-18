@@ -1,5 +1,7 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BubbleGunController : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class BubbleGunController : MonoBehaviour
 
     [SerializeField]
     Transform _spawnPositionY;
+
+    [SerializeField]
+    float scaleFactor = 10f;
 
     [SerializeField]
     float _maxForceTime,
@@ -47,7 +52,11 @@ public class BubbleGunController : MonoBehaviour
 
             if (Time.time - _timerEach > _duration && Input.GetMouseButton(0))
             {
-                _endValue = Mathf.Clamp(_endValue + ((_isUp) ? _duration : -_duration), 0, _maxForceTime);
+                _endValue = Mathf.Clamp(
+                    _endValue + ((_isUp) ? _duration : -_duration),
+                    0,
+                    _maxForceTime
+                );
                 _endValue = Mathf.Round(_endValue / _duration) * _duration;
 
                 if (!_isMaxScale)
@@ -57,7 +66,6 @@ public class BubbleGunController : MonoBehaviour
                 EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
                 Debug.Log("scale bubble: " + _endValue / _maxForceTime);
             }
-
 
             Debug.Log("still run");
         }
@@ -76,6 +84,12 @@ public class BubbleGunController : MonoBehaviour
         {
             _bubbleInstantiated.IsRealeased = true;
             HasSpawn = true;
+
+            var rigidbody2D = _bubbleInstantiated.GetComponent<Rigidbody2D>();
+            var force = Vector2.up * (scaleFactor * _bubbleInstantiated.transform.localScale.x);
+            Debug.Log("force: " + force);
+
+            rigidbody2D.AddForce(force, ForceMode2D.Impulse);
 
             //thả chuột, cấp lực cho bubble bay lên
             //SpawnBubble();
