@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
 
     private bool IsMouseOverPlayerX()
     {
+        return false;
+
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return _mousePosition.x > transform.position.x - offsetOnPlayer
             && _mousePosition.x < transform.position.x + offsetOnPlayer;
