@@ -9,16 +9,23 @@ public class Bubble : MonoBehaviour
     private float smallScalePop = 0.03f;
 
     [SerializeField]
+    private float forceMagnitude = 4f;
+
+    [SerializeField]
+    private float maxLifeTime = 40f;
+
+    [SerializeField]
     private Bubble bubblePrefab;
 
     private Rigidbody2D _rigidbody2D;
     private CircleBorder _circleBorder;
 
     private float _elapsedTime = 0f;
-    private int _popAnimationHash = Animator.StringToHash("pop");
+    private readonly int _popAnimationHash = Animator.StringToHash("pop");
 
     public bool IsRealeased { get; set; }
     private bool _isPopped = false;
+    private bool _isInitialized = false;
 
     private void Awake()
     {
@@ -34,15 +41,22 @@ public class Bubble : MonoBehaviour
             PreventMoving();
             return;
         }
-        else
+        else if (!_isInitialized)
         {
-            Realeased();
+            Initialize();
         }
 
         var upForce = new Vector2(0, (1 * scaleForce * Time.fixedDeltaTime));
         _rigidbody2D.AddForce(upForce, ForceMode2D.Impulse);
 
         _rigidbody2D.velocity = Vector2.ClampMagnitude(_rigidbody2D.velocity, 1.5f);
+
+        _elapsedTime += Time.fixedDeltaTime;
+
+        if (_elapsedTime >= maxLifeTime)
+        {
+            PopBubble(this);
+        }
     }
 
     private void PreventMoving()
@@ -52,9 +66,12 @@ public class Bubble : MonoBehaviour
         _rigidbody2D.gravityScale = 0f;
     }
 
-    private void Realeased()
+    private void Initialize()
     {
         _rigidbody2D.gravityScale = 1f;
+
+        maxLifeTime *= transform.localScale.x;
+        _isInitialized = true;
     }
 
     public void SeparateBubble()
@@ -75,8 +92,8 @@ public class Bubble : MonoBehaviour
         var bubble2Pos = _circleBorder.GetPositionOnCircle(180) * 0.8f; // Slightly inward
 
         // Instantiate new bubbles
-        var bubble1 = Instantiate(bubblePrefab, bubble1Pos, Quaternion.identity);
-        var bubble2 = Instantiate(bubblePrefab, bubble2Pos, Quaternion.identity);
+        var bubble1 = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
+        var bubble2 = Instantiate(bubblePrefab, transform.position, Quaternion.identity);
 
         // Release the new bubbles
         bubble1.IsRealeased = true;
@@ -87,7 +104,6 @@ public class Bubble : MonoBehaviour
         bubble2.transform.localScale = newScale;
 
         // Add a small separation force
-        var forceMagnitude = 1f; // Adjust this value to control the separation speed
         var direction1 = (bubble1Pos - transform.position).normalized;
         var direction2 = (bubble2Pos - transform.position).normalized;
 

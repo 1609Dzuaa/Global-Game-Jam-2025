@@ -156,6 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleForce: 20
   smallScalePop: 0.2
+  forceMagnitude: 4
+  maxLifeTime: 8
   bubblePrefab: {fileID: 1373663661223722254}
 --- !u!50 &1182352017820659980
 Rigidbody2D:
@@ -183,7 +185,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4494476646256915106
 MonoBehaviour:
   m_ObjectHideFlags: 0
