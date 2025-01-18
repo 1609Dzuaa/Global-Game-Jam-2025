@@ -7,7 +7,7 @@ public class PanelTimer : MonoBehaviour
 {
     [SerializeField] Image _imageForce;
 
-    private void Start()
+    private void Awake()
     {
         EventsManager.Subcribe(EventID.OnSendSliderForce, HandleImage);
     }
