@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: UIMainMenu
   m_EditorClassIdentifier: 
   Panels:
-  - panelName: 4
+  - panelName: 5
     prefab: {fileID: 312282410534650337, guid: 4c18b060aba80234ea56d2a9fcb6c6f1, type: 3}
-  - panelName: 0
-    prefab: {fileID: 312282410534650337, guid: 2abd723d39a820a479020f77af279cf5, type: 3}
   - panelName: 4
     prefab: {fileID: 312282410534650337, guid: ac065169d33041d4c83e0712932c1365, type: 3}

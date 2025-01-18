@@ -16,6 +16,6 @@ public class LevelItem : MonoBehaviour
 
     public void PlayOnClick()
     {
-        SceneManager.LoadScene(GameData.Instante.Level);
+        SceneManager.LoadScene(GameData.Instance.GetCurrentLevelConfig().level);
     }
 }
