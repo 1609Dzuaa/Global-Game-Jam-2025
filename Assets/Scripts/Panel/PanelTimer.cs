@@ -23,20 +23,11 @@ public class PanelTimer : MonoBehaviour
     private float duration;
     private float timeRemaining;
 
-    private void OnEnable()
-    {
-        EventsManager.Subcribe(EventID.OnGameStart, HandleImage);
-    }
-
-    private void OnDisable()
-    {
-        EventsManager.Unsubcribe(EventID.OnGameStart, HandleImage);
-    }
     private void Start()
     {
         blueImage.SetActive(true);
         redImage.SetActive(false);
-        SetUp();
+        HandleImage();
     }
 
     private void SetUp()
@@ -50,8 +41,9 @@ public class PanelTimer : MonoBehaviour
                         + Mathf.CeilToInt(timeRemaining % 60).ToString("00");
     }
 
-    private void HandleImage(object obj)
+    private void HandleImage()
     {
+        SetUp();
         float elapsedTime = 0f;
 
         DOTween
