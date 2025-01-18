@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5363206325638324036}
   - component: {fileID: 4811076317585861448}
   - component: {fileID: -4535804952509502842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box
   m_TagString: FallingObject
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 5923949136348147415}
-  forceAmount: 2
+  forceAmount: 4
 --- !u!114 &-4535804952509502842
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,15 +16,20 @@ MonoBehaviour:
   - level: 1
     tileMap: {fileID: 5469967660842558012, guid: 47d853864eae4ad48a5ccaf19a6c0e79, type: 3}
     background: {fileID: 21300000, guid: a35380778a8baca4fa46905139caa347, type: 3}
+    limitedTime: 10
   - level: 2
     tileMap: {fileID: 2903356571754814518, guid: e839645198065734baf16e4d0fbff2ec, type: 3}
     background: {fileID: 21300000, guid: a35380778a8baca4fa46905139caa347, type: 3}
+    limitedTime: 30
   - level: 3
     tileMap: {fileID: 480000014283313704, guid: 0cd84abe578ab03459fb1c508f69f91a, type: 3}
     background: {fileID: 21300000, guid: a35380778a8baca4fa46905139caa347, type: 3}
+    limitedTime: 30
   - level: 4
     tileMap: {fileID: 0}
     background: {fileID: 0}
+    limitedTime: 30
   - level: 5
     tileMap: {fileID: 0}
     background: {fileID: 0}
+    limitedTime: 30

@@ -6,7 +6,7 @@ public class FaucetController : MonoBehaviour
 {
     Animator _anim;
     const string LEAK_TRIGGER_PARAM = "Leak";
-    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private List<Transform> spawnPositions;
     private Coroutine _coroutine;
 
     void Start()
@@ -31,7 +31,11 @@ public class FaucetController : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(1f);
-            Pool.Instante.Spawn("Box", spawnPosition.position);
+            foreach (var trans in spawnPositions)
+            {
+                Pool.Instante.Spawn("Box", trans.position);
+                yield return null;
+            }
         }
     }
 
