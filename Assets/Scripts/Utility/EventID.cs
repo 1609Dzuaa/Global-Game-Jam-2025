@@ -4,4 +4,5 @@ public enum EventID
     OnStartLeak,
     OnCollideBubble,
 
+    OnTimerEnds,
 }

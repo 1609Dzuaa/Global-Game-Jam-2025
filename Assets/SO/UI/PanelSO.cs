@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(fileName = "UIConfig", menuName = "SO/UI")]
 public class PanelSO : ScriptableObject
@@ -21,5 +21,5 @@ public enum PanelName
     PanelMainMenu,
     PanelOption,
     PanelTimer,
-
+    PanelTimer1,
 }
