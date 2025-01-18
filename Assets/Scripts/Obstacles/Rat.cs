@@ -17,7 +17,7 @@ public class Rat : MonoBehaviour
     private const string BUBBLE_TAG = "Bubble";
 
     private Rigidbody2D _rigidbody;
-    bool _pipeDetected, _isRight = true;
+    bool _pipeDetected, _isRight = false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -48,7 +48,7 @@ public class Rat : MonoBehaviour
 
     private void Move()
     {
-        _rigidbody.velocity = new Vector2((_isRight) ? speedX : -speedX, 0f);
+        _rigidbody.velocity = new Vector2((_isRight) ? speedX : -speedX, _rigidbody.velocity.y);
     }
 
 

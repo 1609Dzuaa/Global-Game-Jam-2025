@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2021753019419635411}
   - component: {fileID: 2422796501137784656}
   m_Layer: 0
-  m_Name: Rat
+  m_Name: Purple Rat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -669441227, guid: fa00d827f8b01b749b41ad6f971f4b19, type: 3}
+  m_Sprite: {fileID: 2000131650, guid: dfc2c1cf6d03d89409e968859279b690, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -252,7 +252,7 @@ Animator:
   m_GameObject: {fileID: 1690759557112722693}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 48f9079281354094dac26612b7a66dbb, type: 2}
+  m_Controller: {fileID: 22100000, guid: bbaa4102d0d2a5b49bb98634814aa1f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
