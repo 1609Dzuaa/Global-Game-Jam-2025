@@ -6,7 +6,8 @@ using UnityEngine;
 
 public static class EventsManager
 {
-    static Dictionary<EventID, Action<object>> _dictEvents = new Dictionary<EventID, Action<object>>();
+    static Dictionary<EventID, Action<object>> _dictEvents =
+        new Dictionary<EventID, Action<object>>();
 
     public static void Subcribe(EventID eventID, Action<object> callback)
     {
@@ -27,6 +28,8 @@ public static class EventsManager
 
     public static void Notify(EventID eventID, object eventArgs = null)
     {
+        if (!_dictEvents.ContainsKey(eventID))
+            return;
         _dictEvents[eventID]?.Invoke(eventArgs);
     }
 }
