@@ -23,7 +23,8 @@ public class Bug : MonoBehaviour
         if (!other.gameObject.CompareTag(BUBBLE_TAG))
             return;
 
-        Destroy(other.gameObject);
+        var bubble = other.gameObject.GetComponent<Bubble>();
+        bubble.PopBubble(bubble);
     }
 
     private void Awake()

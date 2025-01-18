@@ -6,12 +6,6 @@ public class Bubble : MonoBehaviour
     private float scaleForce = 1f;
 
     [SerializeField]
-    private float massScale = 1f;
-
-    [SerializeField]
-    private float timeToSeparate = 2f;
-
-    [SerializeField]
     private float smallScalePop = 0.03f;
 
     [SerializeField]
@@ -21,8 +15,10 @@ public class Bubble : MonoBehaviour
     private CircleBorder _circleBorder;
 
     private float _elapsedTime = 0f;
+    private int _popAnimationHash = Animator.StringToHash("pop");
 
     public bool IsRealeased { get; set; }
+    private bool _isPopped = false;
 
     private void Awake()
     {
@@ -31,18 +27,9 @@ public class Bubble : MonoBehaviour
         _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
     }
 
-    // private void Update()
-    // {
-    //     _elapsedTime += Time.deltaTime;
-    //
-    //     if (!(_elapsedTime >= Random.Range(timeToSeparate, timeToSeparate + 1f)))
-    //         return;
-    //     SeparateBubble();
-    // }
-
     private void FixedUpdate()
     {
-        if (!IsRealeased)
+        if (!IsRealeased || _isPopped)
         {
             PreventMoving();
             return;
@@ -72,6 +59,17 @@ public class Bubble : MonoBehaviour
 
     public void SeparateBubble()
     {
+        if (_isPopped)
+            return;
+
+        // Check if the bubble is too small to separate
+        var newScale = transform.localScale / 2;
+        if (newScale.x < smallScalePop)
+        {
+            PopBubble(this);
+            return;
+        }
+
         // Get positions for the two bubbles
         var bubble1Pos = _circleBorder.GetPositionOnCircle(0) * 0.8f; // Slightly inward
         var bubble2Pos = _circleBorder.GetPositionOnCircle(180) * 0.8f; // Slightly inward
@@ -85,15 +83,8 @@ public class Bubble : MonoBehaviour
         bubble2.IsRealeased = true;
 
         // Scale the new bubbles
-        bubble1.transform.localScale = transform.localScale / 2;
-        bubble2.transform.localScale = transform.localScale / 2;
-
-        if (bubble1.transform.localScale.x <= smallScalePop)
-        {
-            Destroy(bubble1.gameObject);
-            Destroy(bubble2.gameObject);
-            return;
-        }
+        bubble1.transform.localScale = newScale;
+        bubble2.transform.localScale = newScale;
 
         // Add a small separation force
         var forceMagnitude = 1f; // Adjust this value to control the separation speed
@@ -107,6 +98,18 @@ public class Bubble : MonoBehaviour
             .GetComponent<Rigidbody2D>()
             .AddForce(direction2 * forceMagnitude, ForceMode2D.Impulse);
 
-        Destroy(gameObject);
+        PopBubble(this);
+    }
+
+    public void PopBubble(Bubble bubble)
+    {
+        if (_isPopped)
+            return;
+
+        bubble.GetComponent<Animator>().SetTrigger(_popAnimationHash);
+        bubble.GetComponent<Collider2D>().enabled = false;
+        _isPopped = true;
+
+        Destroy(bubble.gameObject, 2f);
     }
 }
