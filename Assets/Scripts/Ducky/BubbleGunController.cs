@@ -1,17 +1,30 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class BubbleGunController : MonoBehaviour
 {
-    [SerializeField] Bubble _bubblePrefab;
-    [SerializeField] Transform _spawnPositionY;
-    [SerializeField] float _maxForceTime, _duration;
-    bool _hasHold = false, _hasSpawn = false, _isUp = true, _isMaxScale = false;
-    float _holdTimer, _timerEach, _endValue;
+    [SerializeField]
+    Bubble _bubblePrefab;
+
+    [SerializeField]
+    Transform _spawnPositionY;
+
+    [SerializeField]
+    float _maxForceTime,
+        _duration;
+    bool _hasHold = false,
+        _isUp = true,
+        _isMaxScale = false;
+    float _holdTimer,
+        _timerEach,
+        _endValue;
     Bubble _bubbleInstantiated;
+
+    public bool HasSpawn { get; private set; } = false;
 
     const float DEFAULT_VALUE_ZERO = 0.0f;
 
@@ -28,7 +41,8 @@ public class BubbleGunController : MonoBehaviour
             if (Time.time - _holdTimer >= _maxForceTime)
             {
                 _isUp = !_isUp;
-                if (!_isMaxScale) _isMaxScale = true;
+                if (!_isMaxScale)
+                    _isMaxScale = true;
                 _holdTimer = Time.time;
             }
 
@@ -38,7 +52,7 @@ public class BubbleGunController : MonoBehaviour
                 if (!_isMaxScale)
                     _bubbleInstantiated.transform.DOScale(_endValue, _duration);
                 _timerEach = Time.time;
-                EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
+                // EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
                 Debug.Log("scale bubble" + _endValue / _maxForceTime);
             }
 
@@ -55,12 +69,15 @@ public class BubbleGunController : MonoBehaviour
             _holdTimer = _timerEach = Time.time;
             _endValue = DEFAULT_VALUE_ZERO;
         }
-        else if (Input.GetMouseButtonUp(0) && !_hasSpawn)
+        else if (Input.GetMouseButtonUp(0) && !HasSpawn)
         {
+            _bubbleInstantiated.IsRealeased = true;
+            HasSpawn = true;
+
             //thả chuột, cấp lực cho bubble bay lên
             //SpawnBubble();
         }
-        else if (_hasHold && !_hasSpawn && Time.time - _holdTimer >= _maxForceTime)
+        else if (_hasHold && !HasSpawn && Time.time - _holdTimer >= _maxForceTime)
         {
             //Reset thhanh lực
             // -= _duration;
@@ -70,14 +87,12 @@ public class BubbleGunController : MonoBehaviour
 
     private void SpawnBubble()
     {
-        _hasSpawn = true;
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(
-        mousePos.x,
-        mousePos.y,
-        Camera.main.nearClipPlane));
-
-        Vector3 shootPos = new Vector3(worldPosition.x, _spawnPositionY.position.y, 0f);
+        Vector3 shootPos = new Vector3(transform.position.x, _spawnPositionY.position.y, 0f);
         _bubbleInstantiated = Instantiate(_bubblePrefab, shootPos, Quaternion.identity);
+        _bubbleInstantiated.transform.localScale = new Vector3(
+            DEFAULT_VALUE_ZERO,
+            DEFAULT_VALUE_ZERO,
+            DEFAULT_VALUE_ZERO
+        );
     }
 }
