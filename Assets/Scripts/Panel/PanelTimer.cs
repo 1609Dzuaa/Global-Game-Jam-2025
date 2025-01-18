@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -17,24 +17,41 @@ public class PanelTimer : MonoBehaviour
     GameObject redImage;
 
     [SerializeField]
-    TMPro.TextMeshProUGUI redImageText;
+    TextMeshProUGUI redImageText;
 
-    [SerializeField]
-    float duration = 40f;
+    private TextMeshProUGUI timerText;
+    private float duration;
+    private float timeRemaining;
 
+    private void OnEnable()
+    {
+        EventsManager.Subcribe(EventID.OnGameStart, HandleImage);
+    }
+
+    private void OnDisable()
+    {
+        EventsManager.Unsubcribe(EventID.OnGameStart, HandleImage);
+    }
     private void Start()
     {
         blueImage.SetActive(true);
         redImage.SetActive(false);
-
-        HandleImage();
+        SetUp();
     }
 
-    private void HandleImage()
+    private void SetUp()
     {
-        TextMeshProUGUI timerText = blueImageText;
-        float timeRemaining = duration;
+        duration = GameData.Instante.GetCurrentLevelConfig().limitedTime;
+        timeRemaining = duration;
+        timerText = blueImageText;
+        timerText.text =
+            Mathf.FloorToInt(timeRemaining / 60).ToString("00")
+                        + ":"
+                        + Mathf.CeilToInt(timeRemaining % 60).ToString("00");
+    }
 
+    private void HandleImage(object obj)
+    {
         float elapsedTime = 0f;
 
         DOTween
