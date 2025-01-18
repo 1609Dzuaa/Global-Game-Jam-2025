@@ -167,7 +167,7 @@ MonoBehaviour:
   scaleForce: 10
   massScale: 1
   timeToSeparate: 3
-  smallScalePop: 0.03
+  smallScalePop: 0.9
   bubblePrefab: {fileID: 1373663661223722254}
 --- !u!50 &1182352017820659980
 Rigidbody2D:

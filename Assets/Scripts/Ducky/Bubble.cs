@@ -21,48 +21,56 @@ public class Bubble : MonoBehaviour
     private CircleBorder _circleBorder;
 
     private float _elapsedTime = 0f;
-    private bool _isInitialized = false;
 
-    public void Initialize()
-    {
-        if (transform.localScale.x <= smallScalePop)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
-
-        _isInitialized = true;
-    }
+    public bool IsRealeased { get; set; }
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _circleBorder = GetComponent<CircleBorder>();
+        _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
     }
 
-    private void Update()
-    {
-        if (!_isInitialized)
-            Initialize();
-
-        _elapsedTime += Time.deltaTime;
-
-        if (!(_elapsedTime >= Random.Range(timeToSeparate, timeToSeparate + 1f)))
-            return;
-        //SeparateBubble();
-    }
+    // private void Update()
+    // {
+    //     _elapsedTime += Time.deltaTime;
+    //
+    //     if (!(_elapsedTime >= Random.Range(timeToSeparate, timeToSeparate + 1f)))
+    //         return;
+    //     SeparateBubble();
+    // }
 
     private void FixedUpdate()
     {
+        if (!IsRealeased)
+        {
+            PreventMoving();
+            return;
+        }
+        else
+        {
+            Realeased();
+        }
+
         var upForce = new Vector2(0, (1 * scaleForce * Time.fixedDeltaTime));
         _rigidbody2D.AddForce(upForce, ForceMode2D.Impulse);
 
         _rigidbody2D.velocity = Vector2.ClampMagnitude(_rigidbody2D.velocity, 1.5f);
     }
 
-    private void SeparateBubble()
+    private void PreventMoving()
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.angularVelocity = 0f;
+        _rigidbody2D.gravityScale = 0f;
+    }
+
+    private void Realeased()
+    {
+        _rigidbody2D.gravityScale = 1f;
+    }
+
+    public void SeparateBubble()
     {
         // Get positions for the two bubbles
         var bubble1Pos = _circleBorder.GetPositionOnCircle(0) * 0.8f; // Slightly inward
@@ -72,9 +80,20 @@ public class Bubble : MonoBehaviour
         var bubble1 = Instantiate(bubblePrefab, bubble1Pos, Quaternion.identity);
         var bubble2 = Instantiate(bubblePrefab, bubble2Pos, Quaternion.identity);
 
+        // Release the new bubbles
+        bubble1.IsRealeased = true;
+        bubble2.IsRealeased = true;
+
         // Scale the new bubbles
         bubble1.transform.localScale = transform.localScale / 2;
         bubble2.transform.localScale = transform.localScale / 2;
+
+        if (bubble1.transform.localScale.x <= smallScalePop)
+        {
+            Destroy(bubble1.gameObject);
+            Destroy(bubble2.gameObject);
+            return;
+        }
 
         // Add a small separation force
         var forceMagnitude = 1f; // Adjust this value to control the separation speed
