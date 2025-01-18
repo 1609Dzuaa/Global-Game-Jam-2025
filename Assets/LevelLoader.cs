@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     private void Awake()
     {
-        var _currentLevel = GameData.Instante.GetCurrentLevelConfig();
+        var _currentLevel = GameData.Instance.GetCurrentLevelConfig();
         if(_currentLevel == null)
         {
             Debug.LogError("Null level data");

@@ -5,15 +5,15 @@ using System.Linq;
 
 public class GameData : MonoBehaviour
 {
-    private static GameData _instante;
-    public static GameData Instante;
+    private static GameData _instance;
+    public static GameData Instance;
 
     [SerializeField] private LevelSO _configLevel;
     private LevelConfig _currentLevel;
 
     private void Awake()
     {
-        if (Instante == null) Instante = this;
+        if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
     }
 
