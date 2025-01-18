@@ -59,7 +59,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2015202715
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &4854587651647920286
@@ -114,4 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a12505f619999d4aa756605e771788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 19a657b6731f35e4298721421b9e2cb2, type: 2}
+  _config: {fileID: 11400000, guid: 346f174b40645e8478f2dfccf351d4dd, type: 2}

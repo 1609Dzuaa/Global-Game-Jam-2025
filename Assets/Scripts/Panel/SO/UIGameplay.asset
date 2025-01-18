@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aca163faeed3a234394fc00767560403, type: 3}
-  m_Name: UIConfig
+  m_Name: UIGameplay
   m_EditorClassIdentifier: 
   Panels:
-  - panelName: 0
-    prefab: {fileID: 312282410534650337, guid: 2abd723d39a820a479020f77af279cf5, type: 3}
+  - panelName: 2
+    prefab: {fileID: 1717672500349126712, guid: 8a2a2b079a88c034194a7211b3c99406, type: 3}

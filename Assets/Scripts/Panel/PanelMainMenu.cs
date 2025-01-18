@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PanelMainMenu : MonoBehaviour
 {
     [SerializeField] private Button _btnStart;
     [SerializeField] private Button _btnOption;
     [SerializeField] private Button _btnExit;
+
+    const int FIRST_LEVEL = 1;
 
     private void OnEnable()
     {
@@ -25,7 +28,7 @@ public class PanelMainMenu : MonoBehaviour
 
     private void OnClickedStart()
     {
-
+        SceneManager.LoadScene(FIRST_LEVEL);
     }
 
     private void OnClickedOption()

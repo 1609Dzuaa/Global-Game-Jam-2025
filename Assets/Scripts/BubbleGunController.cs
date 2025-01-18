@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BubbleGunController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BubbleGunController : MonoBehaviour
     float _holdTimer, _timerEach, _endValue;
     Bubble _bubbleInstantiated;
 
-    const float DEFAULT_VALUE_ONE = 1.0f;
+    const float DEFAULT_VALUE_ONE = 0.0f;
 
     private void Update()
     {
@@ -31,6 +32,7 @@ public class BubbleGunController : MonoBehaviour
                 _endValue += _duration;
                 _bubbleInstantiated.transform.DOScale(_endValue, _duration);
                 _timerEach = Time.time;
+                EventsManager.Notify(EventID.OnSendSliderTimer, _endValue / _maxHoldingTime);
                 Debug.Log("scale bubble");
             }
         }
