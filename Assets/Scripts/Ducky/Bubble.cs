@@ -106,7 +106,7 @@ public class Bubble : MonoBehaviour
         if (_isPopped)
             return;
 
-        bubble.GetComponent<Animator>().SetTrigger(_popAnimationHash);
+        bubble.GetComponentInChildren<Animator>().SetTrigger(_popAnimationHash);
         bubble.GetComponent<Collider2D>().enabled = false;
         _isPopped = true;
 
