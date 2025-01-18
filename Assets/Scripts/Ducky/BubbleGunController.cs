@@ -51,13 +51,17 @@ public class BubbleGunController : MonoBehaviour
 
             if (Time.time - _timerEach > _duration && Input.GetMouseButton(0))
             {
-                _endValue = _endValue + ((_isUp) ? _duration : -_duration);
+                _endValue = Mathf.Clamp(_endValue + ((_isUp) ? _duration : -_duration), 0, _maxForceTime);
+                _endValue = Mathf.Round(_endValue / _duration) * _duration;
+
                 if (!_isMaxScale)
                     _bubbleInstantiated.transform.DOScale(_endValue, _duration);
+
                 _timerEach = Time.time;
-                // EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
-                Debug.Log("scale bubble" + _endValue / _maxForceTime);
+                EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
+                Debug.Log("scale bubble: " + _endValue / _maxForceTime);
             }
+
 
             Debug.Log("still run");
         }
