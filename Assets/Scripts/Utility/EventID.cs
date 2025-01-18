@@ -5,4 +5,6 @@ public enum EventID
     OnCollideBubble,
     OnGameStart,
     OnTimerEnds,
+    OnLevelPassed,
+    OnLevelFailed,
 }

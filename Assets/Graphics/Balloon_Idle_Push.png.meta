@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ea0066bfde195664fb8194918a4ee688
+guid: 6bbbbabb820bb154289cc56c123d079e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,123 +119,215 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CanGat_Door_Gai_0
+      name: Balloon_Idle_Push_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
+        y: 113
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efc73ba50bd0ca247881ab00d4cb6dc7
+      internalID: 994332104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon_Idle_Push_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 113
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126adbf3c7a738a49b8053b98f38781d
+      internalID: -1587759060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon_Idle_Push_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 113
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0204f741bf3fe2a4eb0bdaee52d07267
+      internalID: -934729336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon_Idle_Push_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 113
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d404291d8629447aba3c5f9b10fa82
+      internalID: 182003195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon_Idle_Push_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 113
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f4f1bc38113634a921f53c44651a1e
+      internalID: -1467646717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon_Idle_Push_5
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 32
-        width: 25
-        height: 23
+        width: 45
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b18aba32135da8846b8bfa0021976272
-      internalID: -57415630
+      spriteID: 088b70645d3b7f0469ea805a7a913b81
+      internalID: 1198092732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CanGat_Door_Gai_1
+      name: Balloon_Idle_Push_6
       rect:
         serializedVersion: 2
-        x: 37
+        x: 48
         y: 32
-        width: 25
-        height: 23
+        width: 45
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7db92bd537e623b4da4fc2256bef5f40
-      internalID: 84871335
+      spriteID: 40f674a0308a1f5478e2317f38180a28
+      internalID: -1289184801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CanGat_Door_Gai_2
+      name: Balloon_Idle_Push_7
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 32
-        width: 48
-        height: 8
+        width: 45
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b8fdd56258b53948aeb44aa0105f67b
-      internalID: -1043665769
+      spriteID: cd1fd5c254d338d4e8a615f0d21f6962
+      internalID: 736543026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CanGat_Door_Gai_3
+      name: Balloon_Idle_Push_8
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
-        width: 14
-        height: 14
+        x: 144
+        y: 32
+        width: 45
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0066f081f7329d04da43fc3698d632d5
-      internalID: -1262781617
+      spriteID: b8d1b32d24a4ceb4c8bf535930a095b1
+      internalID: 392497826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CanGat_Door_Gai_4
+      name: Balloon_Idle_Push_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 12
-        width: 48
-        height: 6
+        x: 192
+        y: 32
+        width: 45
+        height: 49
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 2, z: 2, w: 2}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a31a7c4807055904ebf8a6f7268c3bbd
-      internalID: 179533750
+      spriteID: 46a944a5bda8cb24aaad82733b11b8e5
+      internalID: -2073598554
       vertices: []
       indices: 
       edges: []
@@ -251,11 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CanGat_Door_Gai_0: -57415630
-      CanGat_Door_Gai_1: 84871335
-      CanGat_Door_Gai_2: -1043665769
-      CanGat_Door_Gai_3: -1262781617
-      CanGat_Door_Gai_4: 179533750
+      Balloon_Idle_Push_0: 994332104
+      Balloon_Idle_Push_1: -1587759060
+      Balloon_Idle_Push_2: -934729336
+      Balloon_Idle_Push_3: 182003195
+      Balloon_Idle_Push_4: -1467646717
+      Balloon_Idle_Push_5: 1198092732
+      Balloon_Idle_Push_6: -1289184801
+      Balloon_Idle_Push_7: 736543026
+      Balloon_Idle_Push_8: 392497826
+      Balloon_Idle_Push_9: -2073598554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

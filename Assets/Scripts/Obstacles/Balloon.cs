@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Balloon : MonoBehaviour, IClickable
 {
@@ -18,8 +20,11 @@ public class Balloon : MonoBehaviour, IClickable
     [SerializeField]
     private float cooldown = 0.5f;
 
-    public UnityEvent OnBalloonClicked;
+    public UnityEvent onBalloonClicked;
     private float _timeSinceLastClick = Mathf.Infinity;
+    private Animator[] _animators;
+
+    private int _blowHash = Animator.StringToHash("blow");
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,7 +45,7 @@ public class Balloon : MonoBehaviour, IClickable
         if (_blowCollider.enabled)
             return;
 
-        OnBalloonClicked?.Invoke();
+        onBalloonClicked?.Invoke();
     }
 
     private void Awake()
@@ -49,14 +54,34 @@ public class Balloon : MonoBehaviour, IClickable
         _blowCollider.enabled = false;
     }
 
+    private void Start()
+    {
+        _animators = GetComponentsInChildren<Animator>();
+    }
+
     private void Update()
     {
         _timeSinceLastClick += Time.deltaTime;
+    }
+
+    private void LateUpdate()
+    {
+        if (_blowCollider.enabled)
+        {
+            _blowCollider.enabled = false;
+        }
     }
 
     public void BlowAir()
     {
         Debug.Log("Blowing air");
         _blowCollider.enabled = true;
+
+        foreach (var animator in _animators)
+        {
+            animator.SetTrigger(_blowHash);
+        }
+
+        _timeSinceLastClick = 0;
     }
 }
