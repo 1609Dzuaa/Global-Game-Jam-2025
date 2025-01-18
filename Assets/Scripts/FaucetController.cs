@@ -6,18 +6,37 @@ public class FaucetController : MonoBehaviour
 {
     Animator _anim;
     const string LEAK_TRIGGER_PARAM = "Leak";
+    [SerializeField] private Transform spawnPosition;
+    private Coroutine _coroutine;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _anim = GetComponent<Animator>();
-        EventsManager.Subcribe(EventID.OnStartLeak, StartLeak);
+        _coroutine = StartCoroutine(LeakWater());
+
+
+
+
+
+        // _anim = GetComponent<Animator>();
+        // EventsManager.Subcribe(EventID.OnStartLeak, StartLeak);
     }
 
     private void OnDestroy()
     {
-        EventsManager.Unsubcribe(EventID.OnStartLeak, StartLeak);
+        // EventsManager.Unsubcribe(EventID.OnStartLeak, StartLeak);
     }
 
-    private void StartLeak(object obj) => _anim.SetTrigger(LEAK_TRIGGER_PARAM);
+    private IEnumerator LeakWater()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            Pool.Instante.Spawn("Box", spawnPosition.position);
+        }
+    }
+
+    private void StartLeak(object obj)
+    {
+        _anim.SetTrigger(LEAK_TRIGGER_PARAM);
+    }
 }

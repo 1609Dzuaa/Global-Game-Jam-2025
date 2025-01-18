@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "UIConfig", menuName = "SO/CreateSO")]
+[CreateAssetMenu(fileName = "UIConfig", menuName = "SO/UI")]
 public class PanelSO : ScriptableObject
 {
     public List<PanelUI> Panels;
