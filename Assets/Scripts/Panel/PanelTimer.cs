@@ -9,12 +9,12 @@ public class PanelTimer : MonoBehaviour
 
     private void Start()
     {
-        EventsManager.Subcribe(EventID.OnSendSliderTimer, HandleImage);
+        EventsManager.Subcribe(EventID.OnSendSliderForce, HandleImage);
     }
 
     private void OnDestroy()
     {
-        EventsManager.Unsubcribe(EventID.OnSendSliderTimer, HandleImage);
+        EventsManager.Unsubcribe(EventID.OnSendSliderForce, HandleImage);
     }
 
     private void HandleImage(object obj)

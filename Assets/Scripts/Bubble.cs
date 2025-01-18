@@ -51,7 +51,7 @@ public class Bubble : MonoBehaviour
 
         if (!(_elapsedTime >= Random.Range(timeToSeparate, timeToSeparate + 1f)))
             return;
-        SeparateBubble();
+        //SeparateBubble();
     }
 
     private void FixedUpdate()

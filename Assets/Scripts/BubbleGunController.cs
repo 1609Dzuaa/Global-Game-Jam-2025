@@ -8,33 +8,41 @@ public class BubbleGunController : MonoBehaviour
 {
     [SerializeField] Bubble _bubblePrefab;
     [SerializeField] Transform _spawnPositionY;
-    [SerializeField] float _maxHoldingTime, _duration;
-    bool _hasHold = false, _hasSpawn = false;
+    [SerializeField] float _maxForceTime, _duration;
+    bool _hasHold = false, _hasSpawn = false, _isUp = true, _isMaxScale = false;
     float _holdTimer, _timerEach, _endValue;
     Bubble _bubbleInstantiated;
 
-    const float DEFAULT_VALUE_ONE = 0.0f;
+    const float DEFAULT_VALUE_ZERO = 0.0f;
 
     private void Update()
     {
         HandleSpawnBubble();
-        HandleScaleBubble();
+        HandleScaleBubbleAndForce();
     }
 
-    private void HandleScaleBubble()
+    private void HandleScaleBubbleAndForce()
     {
         if (_bubbleInstantiated != null)
         {
-            if (Time.time - _holdTimer >= _maxHoldingTime) return;
+            if (Time.time - _holdTimer >= _maxForceTime)
+            {
+                _isUp = !_isUp;
+                if (!_isMaxScale) _isMaxScale = true;
+                _holdTimer = Time.time;
+            }
 
             if (Time.time - _timerEach > _duration && Input.GetMouseButton(0))
             {
-                _endValue += _duration;
-                _bubbleInstantiated.transform.DOScale(_endValue, _duration);
+                _endValue = _endValue + ((_isUp) ? _duration : -_duration);
+                if (!_isMaxScale)
+                    _bubbleInstantiated.transform.DOScale(_endValue, _duration);
                 _timerEach = Time.time;
-                EventsManager.Notify(EventID.OnSendSliderTimer, _endValue / _maxHoldingTime);
-                Debug.Log("scale bubble");
+                EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
+                Debug.Log("scale bubble" + _endValue / _maxForceTime);
             }
+
+            Debug.Log("still run");
         }
     }
 
@@ -45,15 +53,18 @@ public class BubbleGunController : MonoBehaviour
             SpawnBubble();
             _hasHold = true;
             _holdTimer = _timerEach = Time.time;
-            _endValue = DEFAULT_VALUE_ONE;
+            _endValue = DEFAULT_VALUE_ZERO;
         }
         else if (Input.GetMouseButtonUp(0) && !_hasSpawn)
         {
+            //thả chuột, cấp lực cho bubble bay lên
             //SpawnBubble();
         }
-        else if (_hasHold && !_hasSpawn && Time.time - _holdTimer >= _maxHoldingTime)
+        else if (_hasHold && !_hasSpawn && Time.time - _holdTimer >= _maxForceTime)
         {
-            //SpawnBubble();
+            //Reset thhanh lực
+            // -= _duration;
+            //EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
         }
     }
 
