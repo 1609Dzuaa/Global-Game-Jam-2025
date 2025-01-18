@@ -19,5 +19,7 @@ public class PanelUI
 public enum PanelName
 {
     PanelMainMenu,
-    PanelOption
+    PanelOption,
+    PanelTimer,
+
 }

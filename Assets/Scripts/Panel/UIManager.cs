@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-
 
 public class UIManager : MonoBehaviour
 {
@@ -18,8 +16,7 @@ public class UIManager : MonoBehaviour
     {
         foreach (var item in _config.Panels)
         {
-            // dictionary[item.panelName] = new();
-            var newGameObject = GameObject.Instantiate(item.prefab, this.transform);
+            var newGameObject = Instantiate(item.prefab, this.transform);
             newGameObject.SetActive(false);
             dictionary.Add(item.panelName, newGameObject);
         }
@@ -27,13 +24,13 @@ public class UIManager : MonoBehaviour
 
     public void ShowView(PanelName panelName)
     {
-        var result = dictionary.FirstOrDefault(p => p.Key == panelName).Value;
+        var result = dictionary[panelName];
         if (result != null) result.SetActive(true);
     }
 
     public void HideView(PanelName panelName)
     {
-        var result = dictionary.FirstOrDefault(p => p.Key == panelName).Value;
+        var result = dictionary[panelName];
         if (result != null) result.SetActive(false);
     }
 }
