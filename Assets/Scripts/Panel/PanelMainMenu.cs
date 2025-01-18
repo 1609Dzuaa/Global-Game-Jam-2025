@@ -10,8 +10,6 @@ public class PanelMainMenu : MonoBehaviour
     [SerializeField] private Button _btnOption;
     [SerializeField] private Button _btnExit;
 
-    const int FIRST_LEVEL = 1;
-
     private void OnEnable()
     {
         _btnStart.onClick.AddListener(OnClickedStart);
@@ -28,7 +26,8 @@ public class PanelMainMenu : MonoBehaviour
 
     private void OnClickedStart()
     {
-        SceneManager.LoadScene(FIRST_LEVEL);
+        GameData.Instante.Level = 1; //Jusg to test, set level in select level
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void OnClickedOption()
