@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Lever : MonoBehaviour, IClickable
 {
@@ -9,29 +11,38 @@ public class Lever : MonoBehaviour, IClickable
     private bool _isOnlyTriggerByBubble;
 
     [SerializeField]
-    private Transform _platform;
-
-    [SerializeField]
-    private Transform _point;
+    private Platform[] _platforms;
 
     [SerializeField]
     private float _duration = 1f;
 
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
+
+    [SerializeField]
+    private Sprite _spriteOn;
+
+    [SerializeField]
+    private Sprite _spriteOff;
+
     private const string BUBBLE_TAG = "Bubble";
     private bool _isReady = true;
     private bool _toggle;
-    private Vector2 _cachedPosition;
+    private List<Vector3> _platformsOriginalRotation = new List<Vector3>();
 
-    private void OnEnable()
+    private void Start()
     {
-        _cachedPosition = _platform.position;
-        _isReady = true;
+        for (int i = 0; i < _platforms.Length; i++)
+        {
+            _platformsOriginalRotation.Add(_platforms[i].platform.transform.rotation.eulerAngles);
+        }
     }
+
     public void HandleClick()
     {
-        if (_isOnlyTriggerByBubble) 
+        if (_isOnlyTriggerByBubble)
             return;
-        
+
         LeverTrigger();
     }
 
@@ -45,11 +56,66 @@ public class Lever : MonoBehaviour, IClickable
 
     private void LeverTrigger()
     {
-        if (!_isReady) return;
+        if (!_isReady)
+            return;
         _isReady = false;
 
         _toggle = !_toggle;
-        if (_toggle) _platform.DOMove(new Vector2(_point.position.x, _point.position.y), _duration).OnComplete(() => _isReady = true);
-        else _platform.DOMove(_cachedPosition, _duration).OnComplete(() => _isReady = true);
+
+        if (_toggle)
+        {
+            for (int i = 0; i < _platforms.Length; i++)
+            {
+                if (i != _platforms.Length - 1)
+                {
+                    _platforms[i]
+                        .platform.transform.DORotate(
+                            new Vector3(0, 0, _platforms[i].rotateDegree),
+                            _duration
+                        );
+                }
+                else
+                {
+                    _platforms[i]
+                        .platform.transform.DORotate(
+                            new Vector3(0, 0, _platforms[i].rotateDegree),
+                            _duration
+                        )
+                        .OnComplete(() => _isReady = true);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _platforms.Length; i++)
+            {
+                if (i != _platforms.Length - 1)
+                {
+                    _platforms[i]
+                        .platform.transform.DORotate(
+                            new Vector3(0, 0, _platformsOriginalRotation[i].z),
+                            _duration
+                        );
+                }
+                else
+                {
+                    _platforms[i]
+                        .platform.transform.DORotate(
+                            new Vector3(0, 0, _platformsOriginalRotation[i].z),
+                            _duration
+                        )
+                        .OnComplete(() => _isReady = true);
+                }
+            }
+        }
+
+        _spriteRenderer.sprite = _toggle ? _spriteOn : _spriteOff;
+    }
+
+    [Serializable]
+    public struct Platform
+    {
+        public GameObject platform;
+        public float rotateDegree;
     }
 }

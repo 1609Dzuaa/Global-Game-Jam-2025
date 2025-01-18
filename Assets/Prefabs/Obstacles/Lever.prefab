@@ -120,9 +120,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isOnlyTriggerByBubble: 0
-  _platform: {fileID: 0}
-  _point: {fileID: 0}
-  _duration: 2
+  _platforms: []
+  _duration: 1
+  _spriteRenderer: {fileID: 5159939112413912764}
+  _spriteOn: {fileID: -213071531, guid: b7a17fcd9ccd9d54bacc8b1bda54e436, type: 3}
+  _spriteOff: {fileID: 1803053925, guid: b7a17fcd9ccd9d54bacc8b1bda54e436, type: 3}
 --- !u!1 &8142078261478374037
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ GameObject:
   - component: {fileID: 8289435876986900206}
   - component: {fileID: 5159939112413912764}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Lever Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,8 +152,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8521784669128637888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -196,7 +198,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1803053925, guid: b7a17fcd9ccd9d54bacc8b1bda54e436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
