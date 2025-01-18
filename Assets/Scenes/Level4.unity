@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Faucet
       objectReference: {fileID: 0}
+    - target: {fileID: 8681646512801535333, guid: 4f1f7c66cd9c5504c959315d04e24909, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -380,6 +384,10 @@ PrefabInstance:
     - target: {fileID: 533872792835447864, guid: 559a988006df84e4c948900b6638cafe, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 533872792835447864, guid: 559a988006df84e4c948900b6638cafe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2877367922988458278, guid: 559a988006df84e4c948900b6638cafe, type: 3}
       propertyPath: m_LocalPosition.x
