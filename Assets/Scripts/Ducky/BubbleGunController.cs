@@ -30,6 +30,9 @@ public class BubbleGunController : MonoBehaviour
 
     private void Update()
     {
+        if (HasSpawn)
+            return;
+
         HandleSpawnBubble();
         HandleScaleBubbleAndForce();
     }
