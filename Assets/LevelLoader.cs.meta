@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/LevelLoader.cs.meta
 guid: 85c9cd988ce7a2747a36be4c9c08da3d
+========
+guid: 56886b47df52ba04aae251acf3c2be2f
+>>>>>>>> d0cadf5 (fix wrong names):Assets/Scripts/Panel/PanelForce.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
