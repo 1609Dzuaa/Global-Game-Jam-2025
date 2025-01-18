@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 6402803904277365729}
   - component: {fileID: 3383675021936779948}
   m_Layer: 5
-  m_Name: PanelTimer1
+  m_Name: PanelTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
