@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca163faeed3a234394fc00767560403, type: 3}
   m_Name: UIMainMenu
   m_EditorClassIdentifier: 
-  Panels: []
+  Panels:
+  - panelName: 4
+    prefab: {fileID: 312282410534650337, guid: 4c18b060aba80234ea56d2a9fcb6c6f1, type: 3}

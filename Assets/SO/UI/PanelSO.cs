@@ -22,4 +22,5 @@ public enum PanelName
     PanelOption,
     PanelForce,
     PanelTimer,
+    PanelStory
 }

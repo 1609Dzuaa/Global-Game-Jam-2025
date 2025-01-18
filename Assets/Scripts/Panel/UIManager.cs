@@ -6,9 +6,12 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private PanelSO _config;
     private Dictionary<PanelName, GameObject> dictionary = new();
-
+    private static UIManager _instance;
+    public static UIManager Instance;
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
         InitUI();
     }
 

@@ -32,7 +32,7 @@ public class PanelTimer : MonoBehaviour
 
     private void SetUp()
     {
-        duration = GameData.Instante.GetCurrentLevelConfig().limitedTime;
+        duration = GameData.Instance.GetCurrentLevelConfig().limitedTime;
         timeRemaining = duration;
         timerText = blueImageText;
         timerText.text =

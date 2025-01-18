@@ -10,7 +10,7 @@ public class WaterRise : MonoBehaviour
 
     private void Awake()
     {
-        var limitedTime = GameData.Instante.GetCurrentLevelConfig().limitedTime;
+        var limitedTime = GameData.Instance.GetCurrentLevelConfig().limitedTime;
         transform.DOMoveY(this.transform.position.y + 1, limitedTime);
     }
 }
