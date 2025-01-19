@@ -32,6 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3532796588798070598}
+  - {fileID: 6629791509320079057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -190,13 +191,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3276177219111079943}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2953964771294879927}
-  m_Father: {fileID: 3532796588798070598}
+  m_Father: {fileID: 643098949696133272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!114 &6643883161474566989
 MonoBehaviour:
@@ -308,7 +309,7 @@ GameObject:
   - component: {fileID: 3532796588798070598}
   - component: {fileID: 117593644771966844}
   - component: {fileID: 714345622300773515}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ImageBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +329,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7901113270183785748}
-  - {fileID: 6629791509320079057}
   m_Father: {fileID: 643098949696133272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 7901113270183785748}
   - component: {fileID: 1955440816326051323}
   - component: {fileID: 4231060358344358381}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
