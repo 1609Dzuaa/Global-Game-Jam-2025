@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +20,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 _mousePosition;
     private bool _isInCoroutine = false;
     private bool _isPreparing = false;
+
+    private void Start()
+    {
+        EventsManager.Subcribe(EventID.OnLevelFailed, ResetState);
+        EventsManager.Subcribe(EventID.OnLevelPassed, ResetState);
+    }
 
     private void Update()
     {
@@ -95,5 +100,11 @@ public class PlayerController : MonoBehaviour
         }
 
         _isInCoroutine = false;
+    }
+
+    private void ResetState(object obj)
+    {
+        _isInCoroutine = false;
+        _isPreparing = false;
     }
 }
