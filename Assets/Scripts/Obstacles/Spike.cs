@@ -9,6 +9,7 @@ public class Spike : MonoBehaviour
         if (!other.gameObject.CompareTag(BUBBLE_TAG))
             return;
 
-        Destroy(other.gameObject);
+        var bubble = other.gameObject.GetComponent<Bubble>();
+        bubble.PopBubble(bubble);
     }
 }

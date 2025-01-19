@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PanelStory : MonoBehaviour
+public class PanelStoryEnd : MonoBehaviour
 {
     [SerializeField]
     private float moveDuration;
@@ -26,17 +26,13 @@ public class PanelStory : MonoBehaviour
     [SerializeField]
     private Image story3;
 
-    private void OnEnable()
+    private void Start()
     {
         DoAnimStory1(() =>
         {
             DoAnimStory2(() =>
             {
-                DoAnimStory3(() =>
-                {
-                    SceneManager.LoadScene("GamePlayScene");
-                    //UIManager.Instance.ShowView(PanelName.PanelForce);
-                });
+                DoAnimStory3();
             });
         });
     }

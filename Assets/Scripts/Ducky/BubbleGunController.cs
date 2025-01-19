@@ -45,6 +45,12 @@ public class BubbleGunController : MonoBehaviour
         if (HasSpawn)
             return;
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            StopAllCoroutines();
+            _isInCoroutine = false;
+        }
+
         if (Input.GetMouseButton(0) && !_isInCoroutine)
         {
             StartCoroutine(HandleTouchHold());

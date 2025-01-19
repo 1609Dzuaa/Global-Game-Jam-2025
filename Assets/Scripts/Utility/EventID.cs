@@ -7,4 +7,5 @@ public enum EventID
     OnTimerEnds,
     OnLevelPassed,
     OnLevelFailed,
+    OnGameEnds,
 }

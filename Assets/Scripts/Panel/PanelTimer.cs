@@ -37,11 +37,14 @@ public class PanelTimer : MonoBehaviour
     private void KillTween(object obj)
     {
         tween.Kill();
+        HandleImage();
     }
 
     private void SetUp()
     {
-        duration = GameData.Instance.GetCurrentLevelConfig().limitedTime;
+        duration = GameData
+            .Instance.GetLevelConfig(GameData.Instance.GetCurrentLevelConfig().level + 1)
+            .limitedTime;
         timeRemaining = duration;
         timerText = blueImageText;
         timerText.text =

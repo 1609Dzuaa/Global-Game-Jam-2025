@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bubblePrefab: {fileID: 1373663661223722254, guid: 6c663666616195444813b0e3ea9975c6, type: 3}
   _spawnPositionY: {fileID: 2877367922988458278}
-  _maxForceTime: 2
+  scaleFactor: 1000
+  _maxForceTime: 3
   _duration: 0.1

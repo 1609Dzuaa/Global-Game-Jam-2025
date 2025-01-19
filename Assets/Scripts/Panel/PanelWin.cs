@@ -5,14 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class PanelWin : MonoBehaviour
 {
+    LevelLoader _levelLoader;
 
     // Start is called before the first frame update
     void Awake()
     {
-        EventsManager.Subcribe(EventID.OnLevelPassed, ShowPanel);    
+        EventsManager.Subcribe(EventID.OnLevelPassed, ShowPanel);
     }
 
-    private void ShowPanel(object obj) => gameObject.SetActive(true);
+    void Start()
+    {
+        _levelLoader = FindObjectOfType<LevelLoader>();
+    }
+
+    private void ShowPanel(object obj)
+    {
+        Debug.Log("Show panel win");
+        gameObject.SetActive(true);
+    }
 
     private void OnDestroy()
     {
@@ -21,7 +31,15 @@ public class PanelWin : MonoBehaviour
 
     public void OnContinueClick()
     {
-        GameData.Instance.SetLevel(2); //Jusg to test, set level in select level
-        SceneManager.LoadScene("GamePlayScene");
+        var nextLevel = GameData.Instance.GetCurrentLevelConfig().level + 1;
+        if (!GameData.Instance.SetLevel(nextLevel))
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        var config = GameData.Instance.GetCurrentLevelConfig();
+        _levelLoader.LoadLevel(config);
+        gameObject.SetActive(false);
     }
 }

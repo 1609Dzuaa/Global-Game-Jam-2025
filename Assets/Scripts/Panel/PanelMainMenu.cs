@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PanelMainMenu : MonoBehaviour
 {
-    [SerializeField] private Button _btnStart;
-    [SerializeField] private Button _btnOption;
-    [SerializeField] private Button _btnExit;
+    [SerializeField]
+    private Button _btnStart;
+
+    [SerializeField]
+    private Button _btnOption;
+
+    [SerializeField]
+    private Button _btnExit;
 
     private void OnEnable()
     {
@@ -30,13 +35,7 @@ public class PanelMainMenu : MonoBehaviour
         UIManager.Instance.ShowView(PanelName.PanelStory);
     }
 
-    private void OnClickedOption()
-    {
+    private void OnClickedOption() { }
 
-    }
-
-    private void OnClickedExit()
-    {
-
-    }
+    private void OnClickedExit() { }
 }
