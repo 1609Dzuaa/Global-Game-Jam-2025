@@ -8,4 +8,4 @@ PhysicsMaterial2D:
   m_PrefabAsset: {fileID: 0}
   m_Name: Bubble_Physic_Mat
   friction: 0
-  bounciness: 1.2
+  bounciness: 0.5

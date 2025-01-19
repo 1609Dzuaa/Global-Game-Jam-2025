@@ -1,29 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameData : MonoBehaviour
 {
     private static GameData _instance;
     public static GameData Instance;
 
-    [SerializeField] private LevelSO _configLevel;
+    [SerializeField]
+    private LevelSO _configLevel;
     private LevelConfig _currentLevel;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(this.gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
     }
 
-    public void SetLevel(int level)
+    public bool SetLevel(int level)
     {
+        if (_currentLevel == _configLevel.levelConfigs.Last())
+        {
+            SceneManager.LoadScene(2);
+            return false;
+        }
+
         _currentLevel = _configLevel.levelConfigs.FirstOrDefault(p => p.level == level);
+
+        return true;
     }
 
     public LevelConfig GetCurrentLevelConfig()
     {
         return _currentLevel;
+    }
+
+    public LevelConfig GetLevelConfig(int level)
+    {
+        return _configLevel.levelConfigs.FirstOrDefault(p => p.level == level);
     }
 }

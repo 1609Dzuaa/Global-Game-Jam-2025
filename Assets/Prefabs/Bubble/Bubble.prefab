@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1486685507613715436}
   - component: {fileID: 8950550128360585176}
   - component: {fileID: 803425055557108028}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 1182352017820659980}
   - component: {fileID: 4494476646256915106}
   - component: {fileID: 3826392697443273935}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
@@ -154,10 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec80f0bd5dc4e547b05f0f4f2432f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleForce: 20
+  scaleForce: 15
   smallScalePop: 0.2
-  forceMagnitude: 4
-  maxLifeTime: 8
+  forceMagnitude: 3.5
+  maxLifeTime: 12
+  coolDown: 0.5
   bubblePrefab: {fileID: 1373663661223722254}
 --- !u!50 &1182352017820659980
 Rigidbody2D:

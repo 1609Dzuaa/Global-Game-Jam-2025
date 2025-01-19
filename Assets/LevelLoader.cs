@@ -1,19 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer _background;
+
     private void Awake()
     {
         var _currentLevel = GameData.Instance.GetCurrentLevelConfig();
-        if(_currentLevel == null)
+        if (_currentLevel == null)
         {
             Debug.LogError("Null level data");
             return;
         }
-        GameObject.Instantiate(_currentLevel.tileMap, Vector3.zero, Quaternion.identity, transform);
-        //set background
+        LoadLevel(_currentLevel);
+        // set background
+    }
+
+    public void LoadLevel(LevelConfig config)
+    {
+        // clear old level
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        // load new level
+        GameObject.Instantiate(config.tileMap, Vector3.zero, Quaternion.identity, transform);
+
+        _background.sprite = config.background;
     }
 }

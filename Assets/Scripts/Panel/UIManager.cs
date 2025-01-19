@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private PanelSO _config;
+    [SerializeField]
+    private PanelSO _config;
     private Dictionary<PanelName, GameObject> dictionary = new();
     private static UIManager _instance;
     public static UIManager Instance;
+
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(this.gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
         InitUI();
+    }
+
+    private void Start()
+    {
+        EventsManager.Subcribe(EventID.OnGameEnds, (o => ShowView(PanelName.PanelStoryEnd)));
+    }
+
+    private void OnDestroy()
+    {
+        EventsManager.Unsubcribe(EventID.OnGameEnds, (o => ShowView(PanelName.PanelStoryEnd)));
     }
 
     private void InitUI()
@@ -28,12 +42,14 @@ public class UIManager : MonoBehaviour
     public void ShowView(PanelName panelName)
     {
         var result = dictionary[panelName];
-        if (result != null) result.SetActive(true);
+        if (result != null)
+            result.SetActive(true);
     }
 
     public void HideView(PanelName panelName)
     {
         var result = dictionary[panelName];
-        if (result != null) result.SetActive(false);
+        if (result != null)
+            result.SetActive(false);
     }
 }

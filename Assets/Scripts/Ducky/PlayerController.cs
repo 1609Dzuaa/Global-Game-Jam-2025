@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonUp(0))
+        {
+            StopAllCoroutines();
+            _isInCoroutine = false;
+        }
+
         if (!_bubbleGunController.HasSpawn)
         {
             if (Input.GetMouseButton(0) && !_isInCoroutine)

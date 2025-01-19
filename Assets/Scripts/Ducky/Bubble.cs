@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour, IClickable
@@ -35,7 +36,18 @@ public class Bubble : MonoBehaviour, IClickable
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _circleBorder = GetComponent<CircleBorder>();
-        _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
+    }
+
+    private void OnEnable()
+    {
+        EventsManager.Subcribe(EventID.OnLevelFailed, (object o) => PopBubble(this));
+        EventsManager.Subcribe(EventID.OnLevelPassed, (object o) => PopBubble(this));
+    }
+
+    private void OnDisable()
+    {
+        EventsManager.Unsubcribe(EventID.OnLevelFailed, (object o) => PopBubble(this));
+        EventsManager.Unsubcribe(EventID.OnLevelPassed, (object o) => PopBubble(this));
     }
 
     private void Update()
@@ -78,6 +90,7 @@ public class Bubble : MonoBehaviour, IClickable
     private void Initialize()
     {
         _rigidbody2D.gravityScale = 1f;
+        _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
 
         maxLifeTime *= transform.localScale.x;
         _isInitialized = true;

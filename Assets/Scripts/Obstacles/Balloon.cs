@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -64,14 +65,6 @@ public class Balloon : MonoBehaviour, IClickable
         _timeSinceLastClick += Time.deltaTime;
     }
 
-    private void LateUpdate()
-    {
-        if (_blowCollider.enabled)
-        {
-            _blowCollider.enabled = false;
-        }
-    }
-
     public void BlowAir()
     {
         Debug.Log("Blowing air");
@@ -83,5 +76,14 @@ public class Balloon : MonoBehaviour, IClickable
         }
 
         _timeSinceLastClick = 0;
+
+        StartCoroutine(StopBlowAir());
+    }
+
+    private IEnumerator StopBlowAir()
+    {
+        yield return new WaitUntil(() => _timeSinceLastClick >= cooldown);
+
+        _blowCollider.enabled = false;
     }
 }
