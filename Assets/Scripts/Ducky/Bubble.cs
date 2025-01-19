@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
+public class Bubble : MonoBehaviour, IClickable
 {
     [SerializeField]
     private float scaleForce = 1f;
@@ -15,6 +15,9 @@ public class Bubble : MonoBehaviour
     private float maxLifeTime = 40f;
 
     [SerializeField]
+    private float coolDown = 0.5f;
+
+    [SerializeField]
     private Bubble bubblePrefab;
 
     private Rigidbody2D _rigidbody2D;
@@ -26,12 +29,18 @@ public class Bubble : MonoBehaviour
     public bool IsRealeased { get; set; } = false;
     private bool _isPopped = false;
     private bool _isInitialized = false;
+    private float _timeSinceLastClick = Mathf.Infinity;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _circleBorder = GetComponent<CircleBorder>();
         _rigidbody2D.mass = Mathf.Clamp(transform.localScale.x, 0.5f, 1.5f);
+    }
+
+    private void Update()
+    {
+        _timeSinceLastClick += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -78,6 +87,11 @@ public class Bubble : MonoBehaviour
     {
         if (_isPopped)
             return;
+
+        if (_timeSinceLastClick < coolDown)
+            return;
+
+        _timeSinceLastClick = 0f;
 
         // Check if the bubble is too small to separate
         var newScale = transform.localScale / 2;
@@ -127,5 +141,10 @@ public class Bubble : MonoBehaviour
         _isPopped = true;
 
         Destroy(bubble.gameObject, 2f);
+    }
+
+    public void HandleClick()
+    {
+        SeparateBubble();
     }
 }

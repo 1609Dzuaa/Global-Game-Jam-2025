@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -18,36 +19,32 @@ public class PlayerController : MonoBehaviour
     private float offsetOnPlayer = 0.5f;
 
     private Vector3 _mousePosition;
+    private bool _isInCoroutine = false;
+    private bool _isPreparing = false;
 
     private void Update()
     {
         if (!_bubbleGunController.HasSpawn)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && !_isInCoroutine)
             {
-                _playerMover.StopMove();
-                _animation.SetAnim(AnimationName.Blow);
+                StartCoroutine(HandleTouchHold());
             }
-            else if (!IsMouseOverPlayerX())
+            else if (!IsMouseOverPlayerX() && !_isPreparing)
             {
                 _animation.SetAnim(AnimationName.Move);
                 _playerMover.Move(_mousePosition);
             }
-            else
+            else if (!_isPreparing)
             {
                 _animation.SetAnim(AnimationName.Idle);
             }
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 HandleRaycast();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                HandleBubbleSplit();
             }
 
             if (!IsMouseOverPlayerX())
@@ -79,21 +76,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void HandleMove() { }
-
-    private void HandleBubbleSplit()
-    {
-        var bubbles = FindObjectsOfType<Bubble>();
-        foreach (var bubble in bubbles)
-        {
-            bubble.SeparateBubble();
-        }
-    }
-
     private bool IsMouseOverPlayerX()
     {
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return _mousePosition.x > transform.position.x - offsetOnPlayer
             && _mousePosition.x < transform.position.x + offsetOnPlayer;
+    }
+
+    private IEnumerator HandleTouchHold()
+    {
+        _isInCoroutine = true;
+        yield return new WaitForSeconds(1f);
+        if (Input.GetMouseButton(0))
+        {
+            _isPreparing = true;
+            _playerMover.StopMove();
+            _animation.SetAnim(AnimationName.Blow);
+        }
+
+        _isInCoroutine = false;
     }
 }
