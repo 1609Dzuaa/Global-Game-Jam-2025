@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PanelMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 312282410534650337, guid: 2abd723d39a820a479020f77af279cf5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3299206451168945203, guid: 2abd723d39a820a479020f77af279cf5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
