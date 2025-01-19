@@ -119,12 +119,6 @@ public class BubbleGunController : MonoBehaviour
             //thả chuột, cấp lực cho bubble bay lên
             //SpawnBubble();
         }
-        else if (_hasHold && !HasSpawn && Time.time - _holdTimer >= _maxForceTime)
-        {
-            //Reset thhanh lực
-            // -= _duration;
-            //EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
-        }
     }
 
     private void SpawnBubble()

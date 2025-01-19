@@ -11,5 +11,6 @@ public class Spike : MonoBehaviour
 
         var bubble = other.gameObject.GetComponent<Bubble>();
         bubble.PopBubble(bubble);
+        EventsManager.Notify(EventID.OnLevelFailed);
     }
 }

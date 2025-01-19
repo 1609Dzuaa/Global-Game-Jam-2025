@@ -8,4 +8,6 @@ public enum EventID
     OnLevelPassed,
     OnLevelFailed,
     OnGameEnds,
+    OnCollideTrap,
+
 }

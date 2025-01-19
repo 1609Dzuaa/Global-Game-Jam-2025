@@ -31,7 +31,8 @@ public class WaterShapeController : MonoBehaviour
     }
     void OnValidate() {
         // Clean waterpoints 
-        StartCoroutine(CreateWaves());
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(CreateWaves());
     }
     IEnumerator CreateWaves() {
         foreach (Transform child in wavePoints.transform) {

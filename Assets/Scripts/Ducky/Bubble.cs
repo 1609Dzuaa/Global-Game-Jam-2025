@@ -38,6 +38,7 @@ public class Bubble : MonoBehaviour, IClickable
         _circleBorder = GetComponent<CircleBorder>();
     }
 
+
     private void OnEnable()
     {
         EventsManager.Subcribe(EventID.OnLevelFailed, (object o) => PopBubble(this));
