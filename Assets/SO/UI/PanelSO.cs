@@ -26,5 +26,6 @@ public enum PanelName
 
     PanelStory,
     PanelLoose,
+    PanelWin,
 
 }
