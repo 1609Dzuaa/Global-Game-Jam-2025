@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -22,12 +23,20 @@ public class PanelTimer : MonoBehaviour
     private TextMeshProUGUI timerText;
     private float duration;
     private float timeRemaining;
+    private Tween tween;
 
     private void Start()
     {
         blueImage.SetActive(true);
         redImage.SetActive(false);
         HandleImage();
+
+        EventsManager.Subcribe(EventID.OnLevelPassed, KillTween);
+    }
+
+    private void KillTween(object obj)
+    {
+        tween.Kill();
     }
 
     private void SetUp()
@@ -46,7 +55,7 @@ public class PanelTimer : MonoBehaviour
         SetUp();
         float elapsedTime = 0f;
 
-        DOTween
+        tween = DOTween
             .To(() => timeRemaining, x => timeRemaining = x, 0f, duration)
             .OnUpdate(() =>
             {
