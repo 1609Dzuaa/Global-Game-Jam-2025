@@ -24,5 +24,7 @@ public enum PanelName
     PanelTimer,
     PanelSelectLevel,
 
-    PanelStory
+    PanelStory,
+    PanelLoose,
+
 }

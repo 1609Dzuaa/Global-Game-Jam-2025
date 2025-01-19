@@ -82,7 +82,9 @@ public class PanelTimer : MonoBehaviour
             })
             .OnComplete(() =>
             {
-                EventsManager.Notify(EventID.OnTimerEnds, null);
+                UIManager.Instance.HideView(PanelName.PanelTimer);
+                UIManager.Instance.HideView(PanelName.PanelForce);
+                EventsManager.Notify(EventID.OnLevelFailed);
             });
     }
 }

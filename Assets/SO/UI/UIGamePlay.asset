@@ -17,3 +17,5 @@ MonoBehaviour:
     prefab: {fileID: 1717672500349126712, guid: 6bb0bc9111f2cf7418d5cdfac35bd751, type: 3}
   - panelName: 2
     prefab: {fileID: 1717672500349126712, guid: 8a2a2b079a88c034194a7211b3c99406, type: 3}
+  - panelName: 6
+    prefab: {fileID: 1717672500349126712, guid: 941822cbe52953842a77dc3cce14963e, type: 3}
