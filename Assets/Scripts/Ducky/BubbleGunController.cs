@@ -35,6 +35,9 @@ public class BubbleGunController : MonoBehaviour
     private void Start()
     {
         UIManager.Instance.ShowView(PanelName.PanelForce);
+
+        EventsManager.Subcribe(EventID.OnLevelFailed, ResetState);
+        EventsManager.Subcribe(EventID.OnLevelPassed, ResetState);
     }
 
     private void Update()
@@ -137,5 +140,19 @@ public class BubbleGunController : MonoBehaviour
         _startInput = true;
 
         _isInCoroutine = false;
+    }
+
+    private void ResetState(object obj)
+    {
+        HasSpawn = false;
+        _hasHold = false;
+        _isUp = true;
+        _isMaxScale = false;
+        _isInCoroutine = false;
+        _startInput = false;
+        _endValue = DEFAULT_VALUE_ZERO;
+        _holdTimer = DEFAULT_VALUE_ZERO;
+        _timerEach = DEFAULT_VALUE_ZERO;
+        _bubbleInstantiated = null;
     }
 }

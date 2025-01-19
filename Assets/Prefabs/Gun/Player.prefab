@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bubblePrefab: {fileID: 1373663661223722254, guid: 6c663666616195444813b0e3ea9975c6, type: 3}
   _spawnPositionY: {fileID: 156521974924691183}
+  scaleFactor: 7
   _maxForceTime: 2
   _duration: 0.15
 --- !u!114 &4324157038271468746
@@ -317,7 +318,7 @@ Transform:
   m_GameObject: {fileID: 4543360593099647822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 0}
+  m_LocalPosition: {x: 0, y: 1.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

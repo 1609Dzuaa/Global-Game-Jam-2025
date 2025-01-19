@@ -56,9 +56,9 @@ public class Bubble : MonoBehaviour, IClickable
         }
 
         var upForce = new Vector2(0, (1 * scaleForce * Time.fixedDeltaTime));
-        _rigidbody2D.AddForce(upForce, ForceMode2D.Impulse);
 
-        _rigidbody2D.velocity = Vector2.ClampMagnitude(_rigidbody2D.velocity, 1.5f);
+        if (_rigidbody2D.velocity.y <= 1.5f)
+            _rigidbody2D.AddForce(upForce, ForceMode2D.Impulse);
 
         _elapsedTime += Time.fixedDeltaTime;
 
