@@ -31,11 +31,6 @@ public class GameData : MonoBehaviour
 
         _currentLevel = _configLevel.levelConfigs.FirstOrDefault(p => p.level == level);
 
-        if (_currentLevel == _configLevel.levelConfigs[0])
-        {
-            _currentLevel = _configLevel.levelConfigs.Last();
-        }
-
         return true;
     }
 
