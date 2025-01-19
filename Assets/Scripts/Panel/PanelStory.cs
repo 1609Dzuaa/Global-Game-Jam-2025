@@ -23,7 +23,8 @@ public class PanelStory : MonoBehaviour
             {
                 DoAnimStory3(() =>
                 {
-                   SceneManager.LoadScene("GamePlayScene");
+                    SceneManager.LoadScene("GamePlayScene");
+                    //UIManager.Instance.ShowView(PanelName.PanelForce);
                 });
             });
         });

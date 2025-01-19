@@ -29,6 +29,11 @@ public class BubbleGunController : MonoBehaviour
 
     const float DEFAULT_VALUE_ZERO = 0.0f;
 
+    private void Start()
+    {
+        UIManager.Instance.ShowView(PanelName.PanelForce);
+    }
+
     private void Update()
     {
         if (HasSpawn)
@@ -64,10 +69,10 @@ public class BubbleGunController : MonoBehaviour
 
                 _timerEach = Time.time;
                 EventsManager.Notify(EventID.OnSendSliderForce, _endValue / _maxForceTime);
-                Debug.Log("scale bubble: " + _endValue / _maxForceTime);
+                //Debug.Log("scale bubble: " + _endValue / _maxForceTime);
             }
 
-            Debug.Log("still run");
+            //Debug.Log("still run");
         }
     }
 
